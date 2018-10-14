@@ -20,17 +20,9 @@ bool check(const char phrase[], const char c)
 {
 	char *f_index, *l_rindex, *u_rindex;
 
-	if (islower(c)) {
-		f_index  = index(phrase, c);
-		l_rindex = rindex(phrase, c);
-		u_rindex = rindex(phrase, toupper(c));
-	} else if (isupper(c)) {
-		f_index  = index(phrase, c);
-		l_rindex = rindex(phrase, tolower(c));
-		u_rindex = rindex(phrase, c);
-	} else {
-		return false;
-	}
+	f_index  = index(phrase, c);
+	l_rindex = rindex(phrase, tolower(c));
+	u_rindex = rindex(phrase, toupper(c));
 
 	return ((l_rindex && f_index != l_rindex) ||
 			(u_rindex && f_index != u_rindex));
