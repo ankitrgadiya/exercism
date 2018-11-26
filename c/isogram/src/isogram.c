@@ -9,21 +9,21 @@ bool is_isogram(const char phrase[])
 		return false;
 
 	for (int i = 0; phrase[i]; i++) {
-		if (isalpha(phrase[i]) && check(phrase, phrase[i])) {
+		if (isalpha(phrase[i]) && check_recurrence(phrase, phrase[i])) {
 				return false;
 		}
 	}
 	return true;
 }
 
-bool check(const char phrase[], const char c)
+bool check_recurrence(const char phrase[], const char c)
 {
-	char *f_index, *l_rindex, *u_rindex;
+	char *first, *lowercase, *uppercase;
 
-	f_index  = index(phrase, c);
-	l_rindex = rindex(phrase, tolower(c));
-	u_rindex = rindex(phrase, toupper(c));
+	first  = index(phrase, c);
+	lowercase = rindex(phrase, tolower(c));
+	uppercase = rindex(phrase, toupper(c));
 
-	return ((l_rindex && f_index != l_rindex) ||
-			(u_rindex && f_index != u_rindex));
+	return ((lowercase && first != lowercase) ||
+			(uppercase && first != uppercase));
 }

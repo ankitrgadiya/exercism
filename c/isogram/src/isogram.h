@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-bool check(const char phrase[], const char c);
+bool check_recurrence(const char phrase[], const char c);
 bool is_isogram(const char phrase[]);
 
 #endif
