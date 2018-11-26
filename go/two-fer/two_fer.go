@@ -2,10 +2,11 @@ package twofer
 
 import "fmt"
 
+// ShareWith : prints a message "share with" message
 func ShareWith(name string) string {
-	if len(name) == 0 {
+	if name == "" {
 		name = "you"
 	}
 
-	return fmt.Sprintf("One for %v, one for me.", name)
+	return fmt.Sprintf("One for %s, one for me.", name)
 }
