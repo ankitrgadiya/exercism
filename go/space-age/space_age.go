@@ -1,7 +1,9 @@
 package space
 
+// Planet : A type to store Planets
 type Planet string
 
+// Age : Calculates age on given planet
 func Age(s float64, p Planet) float64 {
 	planets := map[Planet]float64{
 		"Mercury": 0.2408467,
