@@ -3,6 +3,8 @@
 #include <strings.h>
 #include <ctype.h>
 
+bool check_recurrence(const char phrase[], const char c);
+
 bool is_isogram(const char phrase[])
 {
 	if (phrase == NULL)
@@ -18,12 +20,10 @@ bool is_isogram(const char phrase[])
 
 bool check_recurrence(const char phrase[], const char c)
 {
-	char *first, *lowercase, *uppercase;
+	char *first_index, *last_lowercase_index;
 
-	first  = index(phrase, c);
-	lowercase = rindex(phrase, tolower(c));
-	uppercase = rindex(phrase, toupper(c));
+	first_index  = index(phrase, c);
+	last_lowercase_index = rindex(phrase, tolower(c));
 
-	return ((lowercase && first != lowercase) ||
-			(uppercase && first != uppercase));
+	return (last_lowercase_index && first_index != last_lowercase_index);
 }
