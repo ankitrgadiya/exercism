@@ -11,7 +11,8 @@ bool is_isogram(const char phrase[])
 		return false;
 
 	for (int i = 0; phrase[i]; i++) {
-		if (isalpha(phrase[i]) && check_recurrence(phrase, phrase[i])) {
+		if (isalpha(phrase[i]) &&
+			check_recurrence(phrase + i + 1, phrase[i])) {
 				return false;
 		}
 	}
@@ -20,10 +21,5 @@ bool is_isogram(const char phrase[])
 
 bool check_recurrence(const char phrase[], const char c)
 {
-	char *first_index, *last_lowercase_index;
-
-	first_index  = index(phrase, c);
-	last_lowercase_index = rindex(phrase, tolower(c));
-
-	return (last_lowercase_index && first_index != last_lowercase_index);
+	return (index(phrase, tolower(c)) || index(phrase, toupper(c)));
 }
