@@ -5,17 +5,25 @@ type Planet string
 
 // Age : Calculates age on given planet
 func Age(s float64, p Planet) float64 {
-	planets := map[Planet]float64{
-		"Mercury": 0.2408467,
-		"Venus":   0.61519726,
-		"Earth":   1,
-		"Mars":    1.8808158,
-		"Jupiter": 11.862615,
-		"Saturn":  29.447498,
-		"Uranus":  84.016846,
-		"Neptune": 164.79132,
+	var orbitalPeriod float64
+	switch p {
+	case "Mercury":
+		orbitalPeriod = 7600543.81
+	case "Venus":
+		orbitalPeriod = 19414149.05
+	case "Earth":
+		orbitalPeriod = 31557600
+	case "Mars":
+		orbitalPeriod = 59354032.69
+	case "Jupiter":
+		orbitalPeriod = 374355659.12
+	case "Saturn":
+		orbitalPeriod = 929292362.88
+	case "Uranus":
+		orbitalPeriod = 2651370019.32
+	case "Neptune":
+		orbitalPeriod = 5200418560.03
 	}
-	orbitalPeriod := float64(31557600)
 
-	return s / (orbitalPeriod * planets[p])
+	return s / orbitalPeriod
 }
