@@ -5,25 +5,24 @@ type Planet string
 
 // Age : Calculates age on given planet
 func Age(s float64, p Planet) float64 {
-	var orbitalPeriod float64
 	switch p {
 	case "Mercury":
-		orbitalPeriod = 7600543.81
+		return s / 7600543.81
 	case "Venus":
-		orbitalPeriod = 19414149.05
-	case "Earth":
-		orbitalPeriod = 31557600
+		return s / 19414149.05
 	case "Mars":
-		orbitalPeriod = 59354032.69
+		return s / 59354032.69
 	case "Jupiter":
-		orbitalPeriod = 374355659.12
+		return s / 374355659.12
 	case "Saturn":
-		orbitalPeriod = 929292362.88
+		return s / 929292362.88
 	case "Uranus":
-		orbitalPeriod = 2651370019.32
+		return s / 2651370019.32
 	case "Neptune":
-		orbitalPeriod = 5200418560.03
+		return s / 5200418560.03
+	case "Earth":
+		return s / 31557600
+	default:
+		return s / 31557600
 	}
-
-	return s / orbitalPeriod
 }
