@@ -3,7 +3,7 @@
 #include <strings.h>
 #include <ctype.h>
 
-bool check_recurrence(const char phrase[], const char c);
+bool check_recurrence(const char phrase[], int c);
 
 bool is_isogram(const char phrase[])
 {
@@ -11,15 +11,15 @@ bool is_isogram(const char phrase[])
 		return false;
 
 	for (int i = 0; phrase[i]; i++) {
-		if (isalpha(phrase[i]) &&
-			check_recurrence(phrase + i + 1, phrase[i])) {
+		if (isalpha(phrase[i]) && check_recurrence(phrase, i)) {
 				return false;
 		}
 	}
 	return true;
 }
 
-bool check_recurrence(const char phrase[], const char c)
+bool check_recurrence(const char phrase[], int c)
 {
-	return (index(phrase, tolower(c)) || index(phrase, toupper(c)));
+	return (index(phrase + c + 1, tolower(phrase[c]))
+			|| index(phrase + c + 1, toupper(phrase[c])));
 }
