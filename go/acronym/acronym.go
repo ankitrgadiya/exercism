@@ -4,14 +4,15 @@ import "strings"
 
 // Abbreviate : Generates abbreviations for the given string
 func Abbreviate(s string) string {
-	s = strings.Replace(s, "-", " ", -1)
-	split := strings.Fields(s)
+	split := strings.FieldsFunc(s,
+		func(c rune) bool {
+			return c == ' ' || c == '-'
+		},
+	)
 
 	a := ""
 	for _, w := range split {
-		if w != "" {
-			a += string(w[0])
-		}
+		a += string(w[0])
 	}
 
 	return strings.ToUpper(a)
