@@ -23,6 +23,6 @@ func Age(s float64, p Planet) float64 {
 	case "Earth":
 		return s / 31557600
 	default:
-		return s / 31557600
+		return 0 // Error
 	}
 }
