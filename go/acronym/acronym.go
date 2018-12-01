@@ -14,8 +14,8 @@ func Abbreviate(s string) string {
 
 	a := ""
 	for _, w := range split {
-		a += strings.ToUpper(string(w[0]))
+		a += string(w[0])
 	}
 
-	return a
+	return strings.ToUpper(a)
 }
