@@ -1,18 +1,21 @@
 package acronym
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+)
 
 // Abbreviate : Generates abbreviations for the given string
 func Abbreviate(s string) string {
-	split := strings.FieldsFunc(s,
-		func(c rune) bool {
-			return c == ' ' || c == '-'
-		},
-	)
-
 	a := ""
-	for _, w := range split {
-		a += string(w[0])
+	letter := true
+	for _, c := range s {
+		if letter && unicode.IsLetter(rune(c)) {
+			a += string(c)
+			letter = false
+		} else if !unicode.IsLetter(rune(c)) {
+			letter = true
+		}
 	}
 
 	return strings.ToUpper(a)
