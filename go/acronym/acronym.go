@@ -6,7 +6,7 @@ import (
 )
 
 // Abbreviate : Generates abbreviations for the given string
-func Abbreviate(s string) (a string) {
+func Abbreviate(s string) (abbrev string) {
 	newWord := true
 	for _, c := range s {
 		if !unicode.IsLetter(rune(c)) {
@@ -14,10 +14,10 @@ func Abbreviate(s string) (a string) {
 			continue
 		}
 		if newWord {
-			a += string(c)
+			abbrev += string(c)
 			newWord = false
 		}
 	}
 
-	return strings.ToUpper(a)
+	return strings.ToUpper(abbrev)
 }
